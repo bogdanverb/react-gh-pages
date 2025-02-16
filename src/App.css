@@ -9,56 +9,48 @@
   height: 6em;
   padding: 1.5em;
   will-change: filter;
-  transition: filter 300ms;
+  transition: filter 300ms ease;
+  animation: glowEffect 4s infinite alternate, tilt 3s infinite ease-in-out; /* Об'єднано анімації */
 }
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+@keyframes glowEffect {
+  0% {
+    filter: drop-shadow(0 0 0 rgba(100, 100, 255, 0.3)); /* Початкове значення без світіння */
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(100, 100, 255, 1)); /* Під час анімації, ефект світіння */
+  }
+  100% {
+    filter: drop-shadow(0 0 0 rgba(100, 100, 255, 0.3)); /* Закінчення, без світіння */
+  }
 }
 
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
+@keyframes tilt {
+  0% {
     transform: rotate(0deg);
   }
-  to {
-    transform: rotate(360deg);
+  25% {
+    transform: rotate(10deg);
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  50% {
+    transform: rotate(-10deg);
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-/* Додатковий стиль для твоєї картинки */
-.custom-logo {
-  width: 100px; /* Встановлюємо бажану ширину */
-  height: auto; /* Пропорційно підлаштовуємо висоту */
-  padding-bottom: 0px;
-}
-
-.logo {
-  width: 200px; /* Зроби розмір логотипа Vite таким же */
-  height: auto; /* Автоматично підлаштовуємо висоту */
-  margin-top: 10px;
+  75% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 .react {
   width: 100px; /* Аналогічно для React логотипа */
   height: auto;
+}
+
+.custom-logo {
+  width: 200px; /* Встановлюємо бажану ширину */
+  height: auto; /* Пропорційно підлаштовуємо висоту */
 }
 
 /* Стилі для основної структури */
@@ -102,7 +94,6 @@ h1 {
   transform: scale(0.95);
 }
 
-/* Кнопка для скидання рахунку */
 .reset-button {
   padding: 10px 20px;
   background-color: #dc3545;
@@ -119,7 +110,6 @@ h1 {
   background-color: #c82333;
 }
 
-/* Стилі для повідомлень */
 .win-message {
   font-size: 1.5rem;
   color: #FF6347;
@@ -137,7 +127,6 @@ h1 {
   }
 }
 
-/* Мотивуючі повідомлення */
 .motivational-message {
   font-size: 1.2rem;
   color: #28a745;
@@ -165,5 +154,39 @@ h1 {
   }
   100% {
     opacity: 0;
+  }
+}
+
+.typing-text {
+  font-size: 5rem;
+  font-weight: bold;
+  color: #d39538;
+  display: inline-block;
+  position: relative;
+  top: -525px;
+}
+
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 1.2em;
+  background-color: #794a0d;
+  position: absolute;
+  bottom: 0;
+  animation: blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    background-color: transparent;
   }
 }
