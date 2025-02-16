@@ -11,9 +11,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -39,4 +41,129 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* Додатковий стиль для твоєї картинки */
+.custom-logo {
+  width: 100px; /* Встановлюємо бажану ширину */
+  height: auto; /* Пропорційно підлаштовуємо висоту */
+  padding-bottom: 0px;
+}
+
+.logo {
+  width: 200px; /* Зроби розмір логотипа Vite таким же */
+  height: auto; /* Автоматично підлаштовуємо висоту */
+  margin-top: 10px;
+}
+
+.react {
+  width: 100px; /* Аналогічно для React логотипа */
+  height: auto;
+}
+
+/* Стилі для основної структури */
+.container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #4CAF50;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.score-board h2 {
+  font-size: 1.5rem;
+  margin-top: 20px;
+  color: #333;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Кнопка для збору балів */
+.card button {
+  padding: 15px 30px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.1s, box-shadow 0.2s;
+}
+
+.card button:hover {
+  background-color: #218838;
+  box-shadow: 0 0 10px rgba(40, 167, 69, 0.6);
+}
+
+.card button:active {
+  transform: scale(0.95);
+}
+
+/* Кнопка для скидання рахунку */
+.reset-button {
+  padding: 10px 20px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.reset-button:hover {
+  background-color: #c82333;
+}
+
+/* Стилі для повідомлень */
+.win-message {
+  font-size: 1.5rem;
+  color: #FF6347;
+  margin-top: 20px;
+  font-weight: bold;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Мотивуючі повідомлення */
+.motivational-message {
+  font-size: 1.2rem;
+  color: #28a745;
+  margin-top: 15px;
+  font-weight: bold;
+  animation: bounceIn 1s ease-in-out, fadeOut 1s ease-out 4s;
+  opacity: 1;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
