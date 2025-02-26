@@ -4,6 +4,8 @@ import confetti from 'canvas-confetti'; // Бібліотека для феєр�
 import './App.css';
 import Comments from "./components/Comments.jsx";
 import './components/Comments.css';
+import LikeButton from './components/LikeButton.jsx';
+import ShareButton from './components/ShareButton.jsx';
 
 function App() {
   const [score, setScore] = useState(0); // Бали користувача
@@ -125,6 +127,8 @@ function App() {
       
       {/* Додаємо компонент коментарів */}
       <Comments />
+      <ShareButton />
+      <LikeButton />
     </div>
   );
 }
