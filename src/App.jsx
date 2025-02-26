@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import myImage from './assets/my-image.png'; // Твоя картинка
 import confetti from 'canvas-confetti'; // Бібліотека для феєрверку
 import './App.css';
+import Comments from 'components/Components'; // Імпортуємо компонент коментарів
+import 'components/Components.css'; // Імпортуємо стилі для коментарів
 
 function App() {
   const [score, setScore] = useState(0); // Бали користувача
@@ -120,6 +122,9 @@ function App() {
       <p className="read-the-docs">
         Натискайте на кнопку, щоб збирати бали!
       </p>
+      
+      {/* Додаємо компонент коментарів */}
+      <Comments />
     </div>
   );
 }
