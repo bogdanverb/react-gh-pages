@@ -1,11 +1,10 @@
+// App.jsx
 import { useState, useEffect } from 'react';
 import myImage from './assets/my-image.png'; // Твоя картинка
 import confetti from 'canvas-confetti'; // Бібліотека для феєрверку
 import './App.css';
 import Comments from "./components/Comments.jsx";
 import './components/Comments.css';
-import LikeButton from './components/LikeButton.jsx';
-import ShareButton from './components/ShareButton.jsx';
 
 function App() {
   const [score, setScore] = useState(0); // Бали користувача
@@ -23,7 +22,6 @@ function App() {
     "Вітаємо, ти зібрав 100 балів!"
   ];
 
-  // Функція для анімації друкування та видалення частини Combat
   useEffect(() => {
     const textToType = 'Combat';
     let typingInterval;
@@ -34,7 +32,6 @@ function App() {
         setIndex(prev => prev + 1);
       }, 200); // Повільніша анімація
     } else {
-      // Після того як вся частина Combat з'явиться, ми будемо стирати її
       setTimeout(() => {
         setCombatText(''); // Очищаємо частину Combat
         setIndex(0); // Оновлюємо індекс
@@ -49,7 +46,6 @@ function App() {
       setScore(prevScore => {
         const newScore = prevScore + 1;
         
-        // Оновлення етапу гри в залежності від набраних балів
         if (newScore === 100) {
           setMessage('Богдан зібрав 100 балів! Вітаємо!');
           setGameStage(stages[3]); // Кінець гри
@@ -91,32 +87,26 @@ function App() {
         <img src={myImage} className="logo custom-logo" alt="My custom logo" />
       </a>
 
-      {/* Заголовок вище лого, великий шрифт */}
       <h1>Допоможи Богдану зібрати 100 балів!</h1>
 
-      {/* Додаємо анімований текст */}
       <div className="typing-text">
         {text}
-        <span className="combat">{combatText}</span> {/* Тільки для Combat */}
+        <span className="combat">{combatText}</span>
         <span className="cursor"></span>
       </div>
 
-      {/* Кнопка для збору балів */}
       <div className="card">
         <button onClick={handleClick}>Зібрати бал</button>
       </div>
 
-      {/* Кнопка скидання рахунку */}
       {score >= 100 && (
         <button onClick={resetScore} className="reset-button">
           Скинути рахунок
         </button>
       )}
 
-      {/* Повідомлення про успіх */}
       {message && <p className="win-message">{message}</p>}
 
-      {/* Етап гри */}
       {gameStage && (
         <p className="game-stage">{gameStage}</p>
       )}
@@ -125,10 +115,8 @@ function App() {
         Натискайте на кнопку, щоб збирати бали!
       </p>
       
-      {/* Додаємо компонент коментарів */}
+      {/* Коментарі та кнопки "Like" і "Share" під кожним коментарем */}
       <Comments />
-      <ShareButton />
-      <LikeButton />
     </div>
   );
 }
