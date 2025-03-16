@@ -8,7 +8,8 @@ const Navigation = () => {
     { path: '/', label: 'Главная' },
     { path: '/pages', label: 'Сторінки' },
     { path: '/profiles', label: 'Профілі' },
-    { path: '/proptypes', label: 'PropTypes Demo' }
+    { path: '/proptypes', label: 'PropTypes Demo' },
+    { path: '/books', label: 'Бібліотека' }
   ];
 
   const isActivePath = (path) => {

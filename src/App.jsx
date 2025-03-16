@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import PropTypes from './pages/PropTypes';  // Изменили импорт
 import Pages from './pages/Pages';
 import Profiles from './pages/Profiles';
+import Books from './pages/Books';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/pages" element={<Pages />} />
             <Route path="/profiles" element={<Profiles />} />
             <Route path="/proptypes" element={<PropTypes />} />  {/* Изменили компонент */}
+            <Route path="/books" element={<Books />} />
           </Routes>
         </div>
       </ThemeProvider>
