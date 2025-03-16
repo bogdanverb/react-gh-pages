@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
+import { useTheme } from '../../context/ThemeContext';
 
 interface PropType {
   name: string;
@@ -9,6 +10,7 @@ interface PropType {
 }
 
 const PropTypeEditor: React.FC = () => {
+  const { isDark } = useTheme();
   const [propTypes, setPropTypes] = useState<PropType[]>([]);
   const [newProp, setNewProp] = useState<PropType>({
     name: '',
@@ -30,26 +32,48 @@ const PropTypeEditor: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="bg-white p-6 rounded-lg shadow">
-        <h2 className="text-xl font-semibold mb-4">Додати властивість</h2>
+      <div className={`p-6 rounded-lg shadow ${
+        isDark ? 'bg-gray-700' : 'bg-white'
+      }`}>
+        <h2 className={`text-xl font-semibold mb-4 ${
+          isDark ? 'text-white' : 'text-gray-800'
+        }`}>
+          Додати властивість
+        </h2>
         <form onSubmit={handleAddPropType} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Назва</label>
+            <label className={`block text-sm font-medium ${
+              isDark ? 'text-gray-200' : 'text-gray-700'
+            }`}>
+              Назва
+            </label>
             <input
               type="text"
               value={newProp.name}
               onChange={(e) => setNewProp({...newProp, name: e.target.value})}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              className={`mt-1 block w-full rounded-md shadow-sm
+                ${isDark 
+                  ? 'bg-gray-600 border-gray-500 text-white focus:border-blue-500' 
+                  : 'border-gray-300 focus:border-blue-500'
+                }`}
               required
             />
           </div>
           
           <div>
-            <label className="block text-sm font-medium text-gray-700">Тип</label>
+            <label className={`block text-sm font-medium ${
+              isDark ? 'text-gray-200' : 'text-gray-700'
+            }`}>
+              Тип
+            </label>
             <select
               value={newProp.type}
               onChange={(e) => setNewProp({...newProp, type: e.target.value as PropType['type']})}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              className={`mt-1 block w-full rounded-md shadow-sm
+                ${isDark 
+                  ? 'bg-gray-600 border-gray-500 text-white focus:border-blue-500' 
+                  : 'border-gray-300 focus:border-blue-500'
+                }`}
             >
               <option value="string">String</option>
               <option value="number">Number</option>
@@ -66,7 +90,9 @@ const PropTypeEditor: React.FC = () => {
               onChange={(e) => setNewProp({...newProp, required: e.target.checked})}
               className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
             />
-            <label className="ml-2 block text-sm text-gray-900">
+            <label className={`ml-2 block text-sm ${
+              isDark ? 'text-gray-200' : 'text-gray-900'
+            }`}>
               Обов'язкове поле
             </label>
           </div>
@@ -80,16 +106,37 @@ const PropTypeEditor: React.FC = () => {
         </form>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow">
-        <h2 className="text-xl font-semibold mb-4">Список властивостей</h2>
+      <div className={`p-6 rounded-lg shadow ${
+        isDark ? 'bg-gray-700' : 'bg-white'
+      }`}>
+        <h2 className={`text-xl font-semibold mb-4 ${
+          isDark ? 'text-white' : 'text-gray-800'
+        }`}>
+          Список властивостей
+        </h2>
         {propTypes.length === 0 ? (
-          <p className="text-gray-500 text-center py-4">Немає доданих властивостей</p>
+          <p className={`text-center py-4 ${
+            isDark ? 'text-gray-400' : 'text-gray-500'
+          }`}>
+            Немає доданих властивостей
+          </p>
         ) : (
           <div className="space-y-3">
             {propTypes.map((prop, index) => (
-              <div key={index} className="border-b py-3">
-                <div className="font-medium">{prop.name}</div>
-                <div className="text-sm text-gray-600">
+              <div 
+                key={index} 
+                className={`border-b py-3 ${
+                  isDark ? 'border-gray-600' : 'border-gray-200'
+                }`}
+              >
+                <div className={`font-medium ${
+                  isDark ? 'text-white' : 'text-gray-800'
+                }`}>
+                  {prop.name}
+                </div>
+                <div className={`text-sm ${
+                  isDark ? 'text-gray-400' : 'text-gray-600'
+                }`}>
                   Тип: {prop.type}
                   {prop.required && <span className="text-red-500 ml-2">*</span>}
                 </div>

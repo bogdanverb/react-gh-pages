@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
-import Navbar from './components/Navbar';
+import Navigation from './components/Navigation/Navigation'; // Изменили импорт с Navbar на Navigation
 import Home from './pages/Home';
 import PropTypes from './pages/PropTypes';  // Изменили импорт
 import Pages from './pages/Pages';
@@ -13,7 +13,7 @@ function App() {
     <Router basename="/react-gh-pages">
       <ThemeProvider>
         <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
-          <Navbar />
+          <Navigation /> {/* Заменили Navbar на Navigation */}
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/pages" element={<Pages />} />
